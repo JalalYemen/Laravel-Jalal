@@ -28,6 +28,6 @@ class UserController extends Controller
         $user->update(['status' => $newStatus]);
 
         // Redirect back with a success message
-        return redirect()->route('users.index')->with('success', "User status successfully changed to {$newStatus}.");
+        return redirect()->route('admin.users.index')->with('success', "User status successfully changed to {$newStatus}.");
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth; // <-- Important: Add this line
+use Illuminate\Support\Facades\Auth; 
 
 class CheckIsAdmin
 {
@@ -15,14 +15,10 @@ class CheckIsAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
-        // Check if the user is logged in AND if their role is 'admin'
-        if (Auth::check() && Auth::user()->role == 'admin') {
-            // If they are an admin, allow them to proceed
-            return $next($request);
-        }
-
-        // Otherwise, redirect them to the homepage
-        return redirect('/');
+{
+    if (!Auth::check() || Auth::user()->role !== 'admin') {
+        abort(403, 'Unauthorized action.');
     }
+    return $next($request);
+}
 }

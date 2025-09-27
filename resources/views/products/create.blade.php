@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" data-prevent-double-submit="true">
+                <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" data-prevent-double-submit="true">
                     @csrf
                     {{-- Category Dropdown --}}
                     <div class="mb-3">

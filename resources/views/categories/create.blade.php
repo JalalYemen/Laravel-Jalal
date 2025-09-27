@@ -23,7 +23,7 @@
                 @endif
                 
                 {{-- The Form --}}
-                <form action="{{ route('categories.store') }}" method="POST" data-prevent-double-submit="true">
+                <form action="{{ route('admin.categories.store') }}" method="POST" data-prevent-double-submit="true">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Category Name</label>
@@ -31,7 +31,7 @@
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Save Category</button>
-                    <a href="{{ route('categories.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>

@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" data-prevent-double-submit="true">
+                <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data" data-prevent-double-submit="true">
                     @csrf
                     @method('PUT')
 

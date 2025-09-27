@@ -4,9 +4,9 @@
 
 {{-- Success Message --}}
 @if (session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success" role="alert">
+    {{ session('success') }}
+</div>
 @endif
 
 <h1 class="h3 mb-3">User Management</h1>
@@ -37,19 +37,19 @@
                             <td>
                                 {{-- Display the role in a styled badge --}}
                                 @if($user->role == 'admin')
-                                    <span class="badge bg-primary">Admin</span>
+                                <span class="badge bg-primary">Admin</span>
                                 @else
-                                    <span class="badge bg-secondary">Customer</span>
+                                <span class="badge bg-secondary">Customer</span>
                                 @endif
                             </td>
                             <td>
-                                <form action="{{ route('users.toggleStatus', $user->id) }}" method="POST" data-prevent-double-submit="true">
-    @csrf
-    @method('PATCH')
-    <button type="submit" class="btn btn-sm {{ $user->status == 'active' ? 'btn-success' : 'btn-secondary' }}">
-        {{ ucfirst($user->status) }}
-    </button>
-</form>
+                                <form action="{{ route('admin.users.toggleStatus', $user->id) }}" method="POST" data-prevent-double-submit="true">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-sm {{ $user->status == 'active' ? 'btn-success' : 'btn-secondary' }}">
+                                        {{ ucfirst($user->status) }}
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

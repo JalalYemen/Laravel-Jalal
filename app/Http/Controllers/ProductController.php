@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
         return view('products.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $validatedData = $request->validate([
             'category_id' => 'required|exists:categories,id',
@@ -41,7 +42,7 @@ class ProductController extends Controller
 
         Product::create($validatedData);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
     }
 
     public function show(Product $product)
@@ -85,13 +86,12 @@ class ProductController extends Controller
     // 3. Update the product record in the database
     $product->update($validatedData);
 
-    // 4. Redirect with a success message
-    return redirect()->route('products.index')->with('success', 'Product updated successfully!');
+    return redirect()->route('admin.products.index')->with('success', 'Product updated successfully!');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully!');
     }
 }

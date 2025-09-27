@@ -22,7 +22,7 @@
                 @endif
                 
                 {{-- The Form --}}
-                <form action="{{ route('categories.update', $category->id) }}" method="POST" data-prevent-double-submit="true">
+                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" data-prevent-double-submit="true">
                     @method('PUT') {{-- Specifies the update method --}}
                     @csrf
 
@@ -33,7 +33,7 @@
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Update Category</button>
-                    <a href="{{ route('categories.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>
